@@ -376,10 +376,13 @@ def login(name, password, broker, appid=''):
           "user_name": str(name),
           "password": str(password)
           }
-    if appid:
-        appid, systeminfo = get_system_info()
+    
+        appid_default, systeminfo = get_system_info()
+    if appid:    
         login["client_app_id"] = appid
-        login["client_system_info"] = systeminfo
+    else
+        login["client_app_id"] = appid_default
+    login["client_system_info"] = systeminfo
 
     return json.dumps(login)
 
